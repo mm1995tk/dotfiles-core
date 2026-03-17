@@ -1,0 +1,50 @@
+name: update flake and format
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 21 * * *"
+  push:
+    branches:
+      - main
+
+jobs:
+  workflow:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Update flake.lock
+        run: nix flake update
+
+      - name: Run nix fmt
+        run: nix fmt
+
+      - name: Detect formatter changes
+        id: changes
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          git commit -m "nix flake update and nix fmt"
+          git push

@@ -1,0 +1,32 @@
+{
+  "name": "Dotfiles Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/nix": {
+      "extraNixConfig": "experimental-features = nix-command flakes"
+    },
+    "ghcr.io/devcontainers/features/github-cli": {}
+  },
+  "postCreateCommand": "./install.sh",
+  "postAttachCommand": "git pull",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "jnoortheen.nix-ide",
+        "asvetliakov.vscode-neovim"
+      ],
+      "settings": {
+        "nix.enableLanguageServer": true,
+        "nix.serverPath": "nixd",
+        "nix.serverSettings": {
+          "nixd": {
+            "eval": {},
+            "formatting": {
+              "command": ["alejandra"]
+            }
+          }
+        }
+      }
+    }
+  }
+}
