@@ -19,6 +19,11 @@ config.keys = {
 	{ key = "h", mods = "ALT|SUPER", action = act.ActivatePaneDirection("Left") },
 	{ key = "j", mods = "ALT|SUPER", action = act.ActivatePaneDirection("Down") },
 	{ key = "k", mods = "ALT|SUPER", action = act.ActivatePaneDirection("Up") },
+	{
+		key = "Enter",
+		mods = "SHIFT",
+		action = wezterm.action.SendString("\n"),
+	},
 }
 
 return config
