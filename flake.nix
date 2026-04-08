@@ -27,7 +27,7 @@
         config.allowUnfree = true;
       };
     homeStateVersion = {
-      home.stateVersion = "25.11";
+      home.stateVersion = "26.05";
     };
   in
     {
