@@ -99,12 +99,6 @@
     };
   };
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    enableZshIntegration = true;
-  };
-
   programs.fzf.enable = true;
   programs.gh.enable = true;
 
