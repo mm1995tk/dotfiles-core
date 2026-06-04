@@ -3,6 +3,7 @@
 
 format = """\
 $time\
+$line_break\
 $username\
 $hostname\
 $localip\
@@ -124,7 +125,7 @@ bright_white = "#f0f6fc"
 disabled = false
 
 [time]
-format = "[$time]($style)\n"
+format = "[$time]($style)"
 disabled = false
 time_format = "%FT%T%:z"
 
