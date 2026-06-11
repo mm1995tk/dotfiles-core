@@ -1,3 +1,3 @@
-# dotfiles
+# dotfiles-core
 
-プライベート/仕事 で共通するdtofilesの設定
+プライベート/仕事で共通する dotfiles の設定。

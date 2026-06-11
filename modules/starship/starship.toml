@@ -93,33 +93,37 @@ $shell\
 $character\
 """
 
-# palette = "github_dark"
+palette = "github_dark"
 
+# wezterm 組み込みの "GitHub Dark" スキーム（iTerm2-Color-Schemes 由来）と同一の値。
+# 色名を上書きすることで、ターミナル側のテーマに依存せず同じ見た目になる。
 [palettes.github_dark]
 bg = "#101216"
-fg = "#8B949E"
-cursor = "#C9D1D9"
+fg = "#8b949e"
+cursor = "#c9d1d9"
 cursor_text = "#101216"
-selection = "#3B5070"
-link = "#58A6FF"
+selection = "#3b5070"
 
-black = "#484f58"
-red = "#ff7b72"
-green = "#3fb950"
-yellow = "#d29922"
-blue = "#58a6ff"
-magenta = "#bc8cff"
-cyan = "#39c5cf"
-white = "#b1bac4"
+black = "#000000"
+red = "#f78166"
+green = "#56d364"
+yellow = "#e3b341"
+blue = "#6ca4f8"
+# starship の組み込み色名は "purple"。"magenta" も同値で定義しておく。
+purple = "#db61a2"
+magenta = "#db61a2"
+cyan = "#2b7489"
+white = "#ffffff"
 
-bright_black = "#6e7681"
-bright_red = "#ffa198"
-bright_green = "#56d364"
-bright_yellow = "#e3b341"
-bright_blue = "#79c0ff"
-bright_magenta = "#d2a8ff"
-bright_cyan = "#56d4dd"
-bright_white = "#f0f6fc"
+bright-black = "#4d4d4d"
+bright-red = "#f78166"
+bright-green = "#56d364"
+bright-yellow = "#e3b341"
+bright-blue = "#6ca4f8"
+bright-purple = "#db61a2"
+bright-magenta = "#db61a2"
+bright-cyan = "#2b7489"
+bright-white = "#ffffff"
 
 [status]
 disabled = false

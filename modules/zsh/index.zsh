@@ -1,13 +1,16 @@
-# ctrl + rでコマンド履歴
 function select-history() {
-  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
-  CURSOR=$#BUFFER
+  local selected=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  if [ -n "$selected" ]; then
+    BUFFER=$selected
+    CURSOR=$#BUFFER
+  fi
+  zle reset-prompt
 }
 zle -N select-history
 bindkey '^r' select-history
 
 
-# ctrl + rでgitのブランチをインタラクティブに変更
+# ctrl + gでgitのブランチをインタラクティブに変更
 function select-git-switch() {
   target_br=$(
     git branch |
