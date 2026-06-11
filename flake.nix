@@ -13,24 +13,8 @@
     nixpkgs,
     treefmt-nix,
     ...
-  }: let
-    modulesDir = ./modules;
-    moduleEntries = builtins.readDir modulesDir;
-    moduleAttrs = builtins.listToAttrs (
-      builtins.concatMap (
-        name:
-          if moduleEntries.${name} == "directory" || (moduleEntries.${name} == "regular" && builtins.match ".*\\.nix" name != null)
-          then [
-            {
-              name = builtins.replaceStrings [".nix"] [""] name;
-              value = modulesDir + "/${name}";
-            }
-          ]
-          else []
-      ) (builtins.attrNames moduleEntries)
-    );
-  in
-    moduleAttrs
+  }:
+    import ./modules.nix
     // flake-utils.lib.eachDefaultSystem (system: let
       treefmtEval =
         treefmt-nix.lib.evalModule (import nixpkgs {
