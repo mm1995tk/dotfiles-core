@@ -14,14 +14,24 @@
     treefmt-nix,
     ...
   }:
-    {
-      helix = ./modules/helix.nix;
-      neovim = ./modules/neovim.nix;
-      starship = ./modules/starship;
-      wezterm = ./modules/wezterm;
-      zsh = ./modules/zsh;
-    }
-    // flake-utils.lib.eachDefaultSystem (system: let
+    let
+      modulesDir = ./modules;
+      moduleEntries = builtins.readDir modulesDir;
+      moduleAttrs = builtins.listToAttrs (
+        builtins.concatMap (name:
+          if  moduleEntries.${name} == "directory" || ( moduleEntries.${name} == "regular" && builtins.match ".*\\.nix" name != null)
+            then [
+              {
+                name = builtins.replaceStrings [".nix"] [""] name;
+                value = modulesDir + "/${name}";
+              }
+            ]
+            else []
+        ) (builtins.attrNames moduleEntries)
+      );
+    in
+      moduleAttrs
+      // flake-utils.lib.eachDefaultSystem (system: let
       treefmtEval =
         treefmt-nix.lib.evalModule (import nixpkgs {
           inherit system;
