@@ -2,13 +2,10 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = {}
 
+config.color_scheme = "GitHub Dark"
+
 -- disable ligatures
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
-
--- wezterm デフォルトの前景色 (Grey70 #b2b2b2) は黄ばんで見えるため明示する
-config.colors = {
-	foreground = "#c9d1d9",
-}
 
 config.initial_cols = 120
 config.initial_rows = 30
