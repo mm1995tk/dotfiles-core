@@ -26,4 +26,12 @@ config.keys = {
 	},
 }
 
+-- GPU/EGL の無い環境（VNC やヘッドレスのコンテナなど）では
+-- WEZTERM_FORCE_SOFTWARE=1 でソフトウェア描画に切り替える。
+-- これがないとデフォルトの OpenGL front_end が libEGL.so.1 を要求して
+-- ウィンドウ生成に失敗する。
+if os.getenv("WEZTERM_FORCE_SOFTWARE") == "1" then
+	config.front_end = "Software"
+end
+
 return config
