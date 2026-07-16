@@ -4,6 +4,14 @@ local config = {}
 
 config.color_scheme = "GitHub Dark"
 
+-- 同梱の JetBrains Mono には CJK の字形が無く、フォントを未指定にすると
+-- 漢字の描画が OS のフォールバック順任せになる。中国語フォントが先に拾われる
+-- マシンでは「実」のような日本語字形が化けるため、次点を明示して固定する。
+config.font = wezterm.font_with_fallback({
+	"JetBrains Mono",
+	"Noto Sans Mono CJK JP",
+})
+
 -- disable ligatures
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
