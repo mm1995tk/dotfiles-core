@@ -95,9 +95,9 @@ $character\
 
 palette = "rose_pine_moon"
 
-# Rosé Pine Moon 公式のターミナル用マッピング。
+# wezterm 組み込みの "rose-pine-moon" スキーム（iTerm2-Color-Schemes 由来）と同一の値。
 # 色名を上書きすることで、ターミナル側のテーマに依存せず同じ見た目になる。
-# Rosé Pine には緑が無く、green には pine（青緑）が割り当てられる。
+# Rosé Pine には緑が無く、green には foam（水色）が割り当てられる。
 [palettes.rose_pine_moon]
 bg = "#232136"
 fg = "#e0def4"
@@ -107,9 +107,9 @@ selection = "#44415a"
 
 black = "#393552"
 red = "#eb6f92"
-green = "#3e8fb0"
+green = "#9ccfd8"
 yellow = "#f6c177"
-blue = "#9ccfd8"
+blue = "#3e8fb0"
 # starship の組み込み色名は "purple"。"magenta" も同値で定義しておく。
 purple = "#c4a7e7"
 magenta = "#c4a7e7"
@@ -118,9 +118,9 @@ white = "#e0def4"
 
 bright-black = "#6e6a86"
 bright-red = "#eb6f92"
-bright-green = "#3e8fb0"
+bright-green = "#9ccfd8"
 bright-yellow = "#f6c177"
-bright-blue = "#9ccfd8"
+bright-blue = "#3e8fb0"
 bright-purple = "#c4a7e7"
 bright-magenta = "#c4a7e7"
 bright-cyan = "#ea9a97"
