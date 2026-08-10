@@ -18,7 +18,7 @@
     };
 
     settings = {
-      theme = "rose_pine_moon";
+      theme = "rose_pine_moon_matte";
       editor = {
         line-number = "relative";
         lsp.display-messages = true;
@@ -26,6 +26,14 @@
         popup-border = "all";
         file-picker.hidden = false;
       };
+    };
+
+    # rose_pine_moon の text #e0def4 は紫寄りの白で、同じく紫がかった背景
+    # #232136 と並ぶと同時対比でくすんで見える。wezterm / starship と同じ
+    # ニュートラルな白に差し替える。
+    themes.rose_pine_moon_matte = {
+      inherits = "rose_pine_moon";
+      palette.text = "#c8c8c8";
     };
   };
 }
