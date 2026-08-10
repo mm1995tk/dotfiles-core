@@ -18,20 +18,13 @@
     };
 
     settings = {
-      theme = "github_dark_popup";
+      theme = "rose_pine_moon";
       editor = {
         line-number = "relative";
         lsp.display-messages = true;
         true-color = true;
         popup-border = "all";
         file-picker.hidden = false;
-      };
-    };
-
-    themes.github_dark_popup = {
-      inherits = "github_dark";
-      "ui.popup" = {
-        bg = "#212830";
       };
     };
   };
