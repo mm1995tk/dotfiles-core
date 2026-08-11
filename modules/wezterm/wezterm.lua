@@ -2,6 +2,9 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = {}
 
+-- 16 色パレットと背景・前景の実体はここで決める。starship 側は "blue" のような
+-- 色名で参照するだけにして、色の定義がふたつに散らないようにしている。
+config.color_scheme = "GitHub Dark"
 
 -- 同梱の JetBrains Mono には CJK の字形が無く、フォントを未指定にすると
 -- 漢字の描画が OS のフォールバック順任せになる。中国語フォントが先に拾われる

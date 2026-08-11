@@ -3,6 +3,7 @@
 
 format = """\
 $time\
+${env_var.DOTFILES_PROFILE}\
 $line_break\
 $username\
 $hostname\
@@ -78,7 +79,6 @@ $gcloud\
 $openstack\
 $azure\
 $direnv\
-$env_var\
 $crystal\
 $custom\
 $sudo\
@@ -94,36 +94,21 @@ $character\
 """
 
 
+# ここの値はすべて default.nix が葉単位で mkDefault にしているので、
+# プロファイル側は lib.mkForce なしで上書きできる。
+# 例: programs.starship.settings.directory.style = "bold green";
 
-# wezterm 組み込みの "GitHub Dark" スキーム（iTerm2-Color-Schemes 由来）と同一の値。
-# 色名を上書きすることで、ターミナル側のテーマに依存せず同じ見た目になる。
-[palettes.github_dark]
-bg = "#101216"
-fg = "#8b949e"
-cursor = "#c9d1d9"
-cursor_text = "#101216"
-selection = "#3b5070"
+# 16 色の実体は端末（wezterm の color_scheme）が持つ。ここでは色名だけを使い、hex は
+# 書かない。starship の palette は使わない（端末と二重に色を持つことになるため）。
 
-black = "#000000"
-red = "#f78166"
-green = "#56d364"
-yellow = "#e3b341"
-blue = "#6ca4f8"
-# starship の組み込み色名は "purple"。"magenta" も同値で定義しておく。
-purple = "#db61a2"
-magenta = "#db61a2"
-cyan = "#2b7489"
-white = "#ffffff"
-
-bright-black = "#4d4d4d"
-bright-red = "#f78166"
-bright-green = "#56d364"
-bright-yellow = "#e3b341"
-bright-blue = "#6ca4f8"
-bright-purple = "#db61a2"
-bright-magenta = "#db61a2"
-bright-cyan = "#2b7489"
-bright-white = "#ffffff"
+# どのプロファイルで switch した環境かをプロンプト先頭に出す。
+# DOTFILES_PROFILE は homelab の home/base.nix が home.sessionVariables で入れる。
+# 未設定の環境（dotfiles-core を単体で使う場合など）ではモジュールごと非表示になる。
+# style は各プロファイルが上書きする（standard=purple / kali=green /
+# claude=#d97757 / devcontainer=blue / ship=white）。
+[env_var.DOTFILES_PROFILE]
+format = " [@$env_value]($style)"
+style = "bold purple"
 
 [status]
 disabled = false
