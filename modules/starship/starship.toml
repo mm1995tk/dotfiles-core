@@ -93,40 +93,37 @@ $shell\
 $character\
 """
 
-palette = "rose_pine_moon"
 
-# wezterm 組み込みの "rose-pine-moon" スキーム（iTerm2-Color-Schemes 由来）と同一の値。
+
+# wezterm 組み込みの "GitHub Dark" スキーム（iTerm2-Color-Schemes 由来）と同一の値。
 # 色名を上書きすることで、ターミナル側のテーマに依存せず同じ見た目になる。
-# Rosé Pine には緑が無く、green には foam（水色）が割り当てられる。
-# ただし前景と白だけは、スキームの #e0def4（紫寄りの白）が背景と同時対比で
-# くすんで見えるため、ニュートラルな白に差し替えている（wezterm 側も同じ）。
-[palettes.rose_pine_moon]
-bg = "#232136"
-fg = "#c8c8c8"
-cursor = "#e0def4"
-cursor_text = "#232136"
-selection = "#44415a"
+[palettes.github_dark]
+bg = "#101216"
+fg = "#8b949e"
+cursor = "#c9d1d9"
+cursor_text = "#101216"
+selection = "#3b5070"
 
-black = "#393552"
-red = "#eb6f92"
-green = "#9ccfd8"
-yellow = "#f6c177"
-blue = "#3e8fb0"
+black = "#000000"
+red = "#f78166"
+green = "#56d364"
+yellow = "#e3b341"
+blue = "#6ca4f8"
 # starship の組み込み色名は "purple"。"magenta" も同値で定義しておく。
-purple = "#c4a7e7"
-magenta = "#c4a7e7"
-cyan = "#ea9a97"
-white = "#c8c8c8"
+purple = "#db61a2"
+magenta = "#db61a2"
+cyan = "#2b7489"
+white = "#ffffff"
 
-bright-black = "#6e6a86"
-bright-red = "#eb6f92"
-bright-green = "#9ccfd8"
-bright-yellow = "#f6c177"
-bright-blue = "#3e8fb0"
-bright-purple = "#c4a7e7"
-bright-magenta = "#c4a7e7"
-bright-cyan = "#ea9a97"
-bright-white = "#c8c8c8"
+bright-black = "#4d4d4d"
+bright-red = "#f78166"
+bright-green = "#56d364"
+bright-yellow = "#e3b341"
+bright-blue = "#6ca4f8"
+bright-purple = "#db61a2"
+bright-magenta = "#db61a2"
+bright-cyan = "#2b7489"
+bright-white = "#ffffff"
 
 [status]
 disabled = false

@@ -2,17 +2,6 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = {}
 
--- rose-pine-moon の前景色 #e0def4 は紫寄りの白で、同じく紫がかった背景
--- #232136 と並ぶと同時対比でくすんで見える。前景と白だけニュートラルに
--- 差し替えた派生スキームを作って当てる。
-local scheme = wezterm.color.get_builtin_schemes()["rose-pine-moon"]
-local matte_white = "#c8c8c8"
-scheme.foreground = matte_white
-scheme.ansi[8] = matte_white
-scheme.brights[8] = matte_white
-scheme.selection_fg = matte_white
-config.color_schemes = { ["rose-pine-moon-matte"] = scheme }
-config.color_scheme = "rose-pine-moon-matte"
 
 -- 同梱の JetBrains Mono には CJK の字形が無く、フォントを未指定にすると
 -- 漢字の描画が OS のフォールバック順任せになる。中国語フォントが先に拾われる
