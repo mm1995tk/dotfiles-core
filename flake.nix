@@ -1,4 +1,4 @@
-# このファイルは mm1995tk/homelab の home/dist/ から生成されている。直接編集しない。
+# このファイルは mm1995tk/homelab の dotfiles/dist/ から生成されている。直接編集しない。
 {
   description = "Nix System Configuration";
 

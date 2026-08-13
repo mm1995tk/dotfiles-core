@@ -102,7 +102,7 @@ $character\
 # 書かない。starship の palette は使わない（端末と二重に色を持つことになるため）。
 
 # どのプロファイルで switch した環境かをプロンプト先頭に出す。
-# DOTFILES_PROFILE は homelab の home/base.nix が home.sessionVariables で入れる。
+# DOTFILES_PROFILE は homelab の dotfiles/base.nix が home.sessionVariables で入れる。
 # 未設定の環境（dotfiles-core を単体で使う場合など）ではモジュールごと非表示になる。
 # style は各プロファイルが上書きする（standard=purple / kali=green /
 # claude=#d97757 / devcontainer=blue / ship=white）。

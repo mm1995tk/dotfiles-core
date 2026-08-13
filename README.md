@@ -5,7 +5,7 @@
 > [!IMPORTANT]
 > このリポジトリは private リポジトリ `mm1995tk/homelab` から CI で自動配信される
 > **読み取り専用ミラー**です。ここへ直接コミットしても次回の同期で上書きされます。
-> 編集は homelab 側（`home/modules/`）で行うこと。
+> 編集は homelab 側（`dotfiles/modules/`）で行うこと。
 
 ## 使い方
 
