@@ -36,6 +36,17 @@ config.keys = {
 	},
 }
 
+-- wezterm の既定でリンクを開くのは「修飾なしの左クリック」で、SUPER には Up の割り当てが
+-- 無いため Cmd+Click は無反応になる。macOS 側の慣習（Safari や他の端末）に合わせて足す。
+-- 既定の割り当ては消えないので、無修飾クリックでも従来どおり開ける。
+config.mouse_bindings = {
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "SUPER",
+		action = act.OpenLinkAtMouseCursor,
+	},
+}
+
 -- GPU/EGL の無い環境（VNC やヘッドレスのコンテナなど）では
 -- WEZTERM_FORCE_SOFTWARE=1 でソフトウェア描画に切り替える。
 -- これがないとデフォルトの OpenGL front_end が libEGL.so.1 を要求して
