@@ -48,6 +48,12 @@
       smartindent = true;
       # gitsigns と診断マークが出入りするたびに本文が横にずれるのを防ぐ
       signcolumn = "yes";
+
+      # treesitter の folding は foldlevel の既定値 0 だと、ファイルを開いた瞬間に
+      # 全体が閉じて `+-- N lines:` の 1 行しか見えなくなる。畳むのは手動 (zc) に任せ、
+      # 開いた直後は常に展開済みにする。
+      foldlevel = 99;
+      foldlevelstart = 99;
     };
 
     autoGroups.ScrollQuarter.clear = true;
