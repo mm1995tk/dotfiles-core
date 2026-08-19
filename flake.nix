@@ -4,7 +4,7 @@
 
   outputs = _: {
     helix = ./modules/helix.nix;
-    neovim = ./modules/neovim.nix;
+    nixvim = ./modules/nixvim.nix;
     starship = ./modules/starship;
     wezterm = ./modules/wezterm;
     zsh = ./modules/zsh;
