@@ -3,6 +3,7 @@
   description = "Nix System Configuration";
 
   outputs = _: {
+    agent-bridge = ./modules/agent-bridge;
     helix = ./modules/helix.nix;
     hunk = ./modules/hunk.nix;
     nixvim = ./modules/nixvim.nix;
