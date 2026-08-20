@@ -1,7 +1,7 @@
 # yazi (TUI ファイルマネージャ)。helix と組ませる前提で置いている ── helix には
 # ファイルツリーが無く、開いていないファイルを「眺めながら選ぶ」手段が弱いので、
 # その穴を埋める役。単体で使うときは zsh 関数 `y` で開き、抜けた先へシェルごと cd する。
-{...}: let
+{pkgs, ...}: let
   # yazi が選択結果を書き出す先。helix 側は同じファイルを読んで :open する。
   # 公式レシピは /tmp の固定パスだが、他人と共用のマシンで衝突しない位置へ移してある。
   chooserDir = "$HOME/.cache/helix";
@@ -11,9 +11,29 @@ in {
     enable = true;
     enableZshIntegration = true;
 
-    # opener は既定のまま $EDITOR に任せる。EDITOR を hx に固定するのは modules/helix.nix
-    # 側で、ここに hx と書くと「エディタは何か」の答えが二箇所に増える。
-    settings.mgr.show_hidden = true; # helix の file-picker.hidden = false と揃える
+    # 任意のコマンドの出力をプレビューにする公式プラグイン。markdown を glow に通すのに使う。
+    # 専用の glow.yazi ではなくこちらなのは、前者が piper の登場で deprecated になっており、
+    # プレビュー幅も 55 桁固定でペイン幅に追従しないため。
+    plugins.piper = pkgs.yaziPlugins.piper;
+
+    # glow は piper が PATH から探す。home.packages ではなく yazi のラッパーに同梱するのは、
+    # プレビューでしか使わないコマンドをシェルの PATH に出さないため。
+    extraPackages = [pkgs.glow];
+
+    settings = {
+      # opener は既定のまま $EDITOR に任せる。EDITOR を hx に固定するのは modules/helix.nix
+      # 側で、ここに hx と書くと「エディタは何か」の答えが二箇所に増える。
+      mgr.show_hidden = true; # helix の file-picker.hidden = false と揃える
+
+      # 既定では text/* として色付きのソースが出るだけなので、markdown だけ整形して見せる。
+      # -s=dark 固定なのは端末・helix・hunk と揃えるため（$t で端末に追従させることもできる）。
+      plugin.prepend_previewers = [
+        {
+          url = "*.md";
+          run = ''piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"'';
+        }
+      ];
+    };
   };
 
   # helix からの入口。yazi 公式の Helix 連携レシピ
