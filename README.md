@@ -10,7 +10,7 @@
 ## 使い方
 
 flake のトップレベル output に機能単位の Home Manager モジュールがある
-（現在: `helix` / `nixvim` / `starship` / `wezterm` / `zsh`）。
+（現在: `helix` / `hunk` / `nixvim` / `starship` / `wezterm` / `yazi` / `zsh`）。
 
 ```nix
 # flake.nix

@@ -1,4 +1,12 @@
-{...}: {
+{lib, ...}: {
+  # 他のツールが開くエディタもこれに揃える。yazi の opener や git のコミットメッセージ
+  # 編集はここを見る。キー単位で mkDefault にするのは、セット全体に掛けると別のモジュール
+  # が home.sessionVariables を定義した時点で既定値が丸ごと消えるため。
+  home.sessionVariables = {
+    EDITOR = lib.mkDefault "hx";
+    VISUAL = lib.mkDefault "hx";
+  };
+
   # https://home-manager-options.extranix.com/?query=helix&release=release-25.05
   programs.helix = {
     enable = true;
@@ -17,6 +25,8 @@
       ];
     };
 
+    # 外部ツールを呼ぶキー (C-y = yazi, C-g = hunk) は modules/yazi.nix と
+    # modules/hunk.nix が足す。呼ばれる側の都合が濃いので、定義もそちらに置いてある。
     settings = {
       theme = "github_dark_popup";
       editor = {

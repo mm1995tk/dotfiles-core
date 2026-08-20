@@ -92,6 +92,22 @@ config.keys = {
 	{ key = "j", mods = "ALT|SUPER", action = act.ActivatePaneDirection("Down") },
 	{ key = "k", mods = "ALT|SUPER", action = act.ActivatePaneDirection("Up") },
 
+	-- ファイラ (yazi) を隣に開く。helix の中からは C-y で呼べる（dotfiles/modules/yazi.nix）
+	-- ので、これはシェルで作業しているときの入口。cwd は分割元のペインを引き継ぐ。
+	--
+	-- コマンドを直に渡さずログインシェルを噛ませているのは、args を明示すると wezterm
+	-- 自身の環境で exec されるため ── Finder から起動した GUI の PATH には
+	-- ~/.nix-profile/bin が無く、yazi を見つけられない。
+	{
+		key = "e",
+		mods = "ALT|SUPER",
+		action = act.SplitPane({
+			direction = "Right",
+			size = { Percent = 40 },
+			command = { args = { os.getenv("SHELL") or "zsh", "-lc", "yazi" } },
+		}),
+	},
+
 	-- 分割したまま一時的に1枚に戻す。3分割以上にすると hjkl の移動より先にこれが要る。
 	{ key = "z", mods = "ALT|SUPER", action = act.TogglePaneZoomState },
 	-- ペインにラベルを振って直接指定する。数が増えると方向キーでの移動より速い。

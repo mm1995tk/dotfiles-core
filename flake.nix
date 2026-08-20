@@ -4,9 +4,11 @@
 
   outputs = _: {
     helix = ./modules/helix.nix;
+    hunk = ./modules/hunk.nix;
     nixvim = ./modules/nixvim.nix;
     starship = ./modules/starship;
     wezterm = ./modules/wezterm;
+    yazi = ./modules/yazi.nix;
     zsh = ./modules/zsh;
   };
 }
