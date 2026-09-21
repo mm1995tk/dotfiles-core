@@ -18,11 +18,16 @@ end
 -- 色名で参照するだけにして、色の定義がふたつに散らないようにしている。
 config.color_scheme = "GitHub Dark"
 
--- 同梱の JetBrains Mono には CJK の字形が無く、フォントを未指定にすると
+-- 実体は default.nix が home.packages で入れる（そちらのコメント参照）。
+--
+-- JetBrains Mono の Nerd Font パッチ版には CJK の字形が無く、フォントを未指定にすると
 -- 漢字の描画が OS のフォールバック順任せになる。中国語フォントが先に拾われる
 -- マシンでは「実」のような日本語字形が化けるため、次点を明示して固定する。
+--
+-- Nerd Font には Mono / Propo / 無印の3系統があり、記号を1セルに収めるのは Mono だけ。
+-- 無印は記号が2セル幅で、yazi のような桁を揃える TUI で列がずれる。
 config.font = wezterm.font_with_fallback({
-	"JetBrains Mono",
+	"JetBrainsMono Nerd Font Mono",
 	"Noto Sans Mono CJK JP",
 })
 

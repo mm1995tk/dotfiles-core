@@ -19,9 +19,16 @@
   };
 
   config = {
-    # wezterm.lua の font_with_fallback が名前で参照する日本語フォント。
-    # これを入れないと CJK のフォールバック先が OS 任せになり、マシンごとに字形が変わる。
-    home.packages = [pkgs.noto-fonts-cjk-sans];
+    # wezterm.lua の font_with_fallback が名前で参照するフォント。どちらも入れないと
+    # フォールバック先が OS 任せになり、マシンごとに字形が変わる。
+    #
+    # nerd-fonts は wezterm 自身も Symbols Nerd Font Mono を同梱していて記号だけなら
+    # 描けるが、本文と同じ JetBrains Mono にパッチされた版を入れておくと、記号の
+    # メトリクスが本文とずれない。他のアプリ（GUI エディタ等）からも同じ名前で使える。
+    home.packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      noto-fonts-cjk-sans
+    ];
 
     programs.wezterm = {
       enable = true;
