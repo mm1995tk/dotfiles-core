@@ -77,7 +77,7 @@
         # extraConfigLua 等を lua としてハイライトする
         nixvimInjections = true;
 
-        # 既定は「全 grammar」。コンテナ (kali / claude) にも base.nix 経由で入るので、
+        # 既定は「全 grammar」。コンテナ向けのプロファイルにも base.nix 経由で入るので、
         # 実際に触る言語だけに絞ってクロージャを抑える。
         grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
           bash

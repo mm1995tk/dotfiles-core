@@ -40,7 +40,7 @@ in {
   # (https://yazi-rs.github.io/docs/tips) をなぞっている。
   #
   # 肝は :insert-output が helix の端末をそのまま子プロセスへ貸すこと。wezterm のペイン
-  # 分割に頼らないので、ssh 先（kali / claude コンテナ）の helix でも同じキーで動く
+  # 分割に頼らないので、ssh 先の helix でも同じキーで動く
   # ── 端末を借りられない hunk 側 (modules/hunk.nix の C-g) とはそこが違う。
   #
   # 前後の :sh は後始末:

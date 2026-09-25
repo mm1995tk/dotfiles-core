@@ -17,7 +17,7 @@ start=$2
 end=${3:-$2}
 
 # 別ホストの herdr へ送るときだけ AGENT_SEND_HOST を設定する（例: Mac の helix から
-# claude コンテナのエージェントへ）。herdr の socket API はローカル固定で remote 指定を
+# ssh 先のエージェントへ）。herdr の socket API はローカル固定で remote 指定を
 # 持たないので、ssh で向こう側でコマンドごと実行するしかない。
 herdr_() {
   if [ -n "${AGENT_SEND_HOST:-}" ]; then

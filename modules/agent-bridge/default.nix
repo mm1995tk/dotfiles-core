@@ -5,15 +5,15 @@
 # 押した時点のスナップショットしか渡らない代わりに、何が共有されたかが曖昧にならない。
 #
 # 経路は herdr（エージェントのペインを socket API で操作できる）に寄せてある。wezterm の
-# ペイン操作でも同じことはできるが、それだと wezterm の無い ssh 先（kali / claude コンテナ）
-# で使えないうえ、「どのペインで claude が動いているか」を推測する必要がある。herdr は
+# ペイン操作でも同じことはできるが、それだと wezterm の無い ssh 先で使えないうえ、
+# 「どのペインで claude が動いているか」を推測する必要がある。herdr は
 # エージェントを一級の概念として持っているので、宛先を推測せずに引ける。
 {pkgs, ...}: let
   agentSend = pkgs.writeShellApplication {
     name = "agent-send";
-    # herdr は runtimeInputs に入れない。コンテナ側の herdr は nixpkgs ではなく
-    # /usr/local/bin にあり（containers/services/claude/Dockerfile）、ここで nixpkgs 版を
-    # PATH の先頭に差し込むと、クライアントとサーバのバージョンがずれる。
+    # herdr は runtimeInputs に入れない。環境によっては herdr が nixpkgs 以外（/usr/local/bin
+    # 等）から入っており、ここで nixpkgs 版を PATH の先頭に差し込むと、クライアントとサーバの
+    # バージョンがずれる。
     runtimeInputs = [pkgs.git pkgs.jq];
     text = builtins.readFile ./agent-send.sh;
   };
