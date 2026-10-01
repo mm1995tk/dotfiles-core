@@ -25,8 +25,8 @@
       ];
     };
 
-    # 外部ツールを呼ぶキー (C-y = yazi, C-g = hunk) は modules/yazi.nix と
-    # modules/hunk.nix が足す。呼ばれる側の都合が濃いので、定義もそちらに置いてある。
+    # 外部ツールを呼ぶキー (C-y = yazi, C-g = hunk, C-n = agent-bridge) は、呼ばれる側の
+    # モジュールが足す。呼ばれる側の都合が濃いので、定義もそちらに置いてある。
     settings = {
       theme = "github_dark_popup";
       editor = {

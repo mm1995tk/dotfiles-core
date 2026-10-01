@@ -4,7 +4,7 @@ local config = {}
 
 -- ランチャーに並べる ssh 先の一覧。ここに直書きせず default.nix が
 -- programs.wezterm.sshHosts から ssh-hosts.lua を生成するのは、ホスト名が
--- 環境ごとの事実だから（homelab では manifest.nix が唯一の真実の源になる）。
+-- 環境ごとの事実だから。
 -- require ではなく config_dir からの dofile なのは、wezterm の package.path が
 -- ~/.config/wezterm 固定で、--config-file で別の場所を読ませたときに拾えないため。
 -- 生成物が無い環境でも設定全体が落ちないよう pcall で受ける ── ここでの
@@ -97,7 +97,7 @@ config.keys = {
 	{ key = "j", mods = "ALT|SUPER", action = act.ActivatePaneDirection("Down") },
 	{ key = "k", mods = "ALT|SUPER", action = act.ActivatePaneDirection("Up") },
 
-	-- ファイラ (yazi) を隣に開く。helix の中からは C-y で呼べる（dotfiles/modules/yazi.nix）
+	-- ファイラ (yazi) を隣に開く。helix の中からは C-y で呼べる（modules/yazi.nix）
 	-- ので、これはシェルで作業しているときの入口。cwd は分割元のペインを引き継ぐ。
 	--
 	-- コマンドを直に渡さずログインシェルを噛ませているのは、args を明示すると wezterm
@@ -120,8 +120,8 @@ config.keys = {
 	{ key = "s", mods = "ALT|SUPER", action = act.PaneSelect({ mode = "SwapWithActive" }) },
 	-- リサイズは連打する操作なので、単発のキーではなくモード（key_tables）にする。
 	{ key = "r", mods = "ALT|SUPER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
-	-- 画面に見えている URL・ハッシュ・IP をキーボードだけで選ぶ。198.18.0.10 のような
-	-- IP やコミットハッシュを拾うのに効く（マウスでの選択・Cmd+Click の対になる操作）。
+	-- 画面に見えている URL・ハッシュ・IP をキーボードだけで選ぶ（マウスでの選択・Cmd+Click の
+	-- 対になる操作）。
 	{ key = "Space", mods = "ALT|SUPER", action = act.QuickSelect },
 
 	-- 接続先 (launch_menu の ssh 項目) を選んで新しいタブで開く。既定ではランチャーに

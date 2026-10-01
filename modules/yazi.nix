@@ -21,8 +21,7 @@ in {
     extraPackages = [pkgs.glow];
 
     settings = {
-      # opener は既定のまま $EDITOR に任せる。EDITOR を hx に固定するのは modules/helix.nix
-      # 側で、ここに hx と書くと「エディタは何か」の答えが二箇所に増える。
+      # opener は既定のまま $EDITOR（modules/helix.nix）に任せ、ここには hx と書かない。
       mgr.show_hidden = true; # helix の file-picker.hidden = false と揃える
 
       # 既定では text/* として色付きのソースが出るだけなので、markdown だけ整形して見せる。
@@ -40,8 +39,7 @@ in {
   # (https://yazi-rs.github.io/docs/tips) をなぞっている。
   #
   # 肝は :insert-output が helix の端末をそのまま子プロセスへ貸すこと。wezterm のペイン
-  # 分割に頼らないので、ssh 先の helix でも同じキーで動く
-  # ── 端末を借りられない hunk 側 (modules/hunk.nix の C-g) とはそこが違う。
+  # 分割に頼らないので、ssh 先の helix でも同じキーで動く。
   #
   # 前後の :sh は後始末:
   #   - 先頭の rm は前回の選択結果を消す（残っていると選ばずに抜けたとき古いファイルが開く）

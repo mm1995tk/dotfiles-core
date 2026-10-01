@@ -2,10 +2,9 @@
 # 固めるので、起動時のプラグイン取得も grammar のコンパイルも起きない。
 #
 # このファイルは `programs.nixvim` の**設定だけ**を持ち、オプションを宣言する nixvim 本体の
-# モジュール (`nixvim.homeModules.nixvim`) は import 側 (dotfiles/default.nix) が重ねる。
-# dotfiles/dist/ が配信するミラーの flake は inputs を持たない契約なので、ここから
-# flake input を参照できないため。ミラーの消費者もこのモジュールを使うには自分の flake に
-# nixvim input を足して同じ 2 枚重ねをする必要がある。
+# モジュール (`nixvim.homeModules.nixvim`) は import する側が重ねる。このモジュールを配る
+# flake (dotfiles-core) は inputs を持たないので、ここから flake input を参照できないため。
+# 使う側は自分の flake に nixvim input を足して 2 枚重ねにする。
 {
   config,
   pkgs,
@@ -65,7 +64,7 @@
       }
     ];
 
-    # helix (modules/helix.nix) と同じ github_dark に揃える
+    # helix と同じ github_dark に揃える
     colorschemes.github-theme.enable = true;
 
     plugins = {
@@ -77,8 +76,8 @@
         # extraConfigLua 等を lua としてハイライトする
         nixvimInjections = true;
 
-        # 既定は「全 grammar」。コンテナ向けのプロファイルにも base.nix 経由で入るので、
-        # 実際に触る言語だけに絞ってクロージャを抑える。
+        # 既定は「全 grammar」。コンテナにも入るモジュールなので、実際に触る言語だけに絞って
+        # クロージャを抑える。
         grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
           bash
           comment
@@ -147,7 +146,7 @@
     };
 
     # LSP。サーバのバイナリは nixvim が各サーバの package として引くので、
-    # PATH 上の nixd (base.nix、helix が使う) とは独立している。
+    # PATH 上の LSP（helix が使う）とは独立している。
     lsp = {
       inlayHints.enable = true;
 

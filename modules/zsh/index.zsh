@@ -10,7 +10,6 @@ zle -N select-history
 bindkey '^r' select-history
 
 
-# ctrl + gでgitのブランチをインタラクティブに変更
 function select-git-switch() {
   target_br=$(
     git branch |

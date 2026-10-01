@@ -94,17 +94,13 @@ $character\
 """
 
 
-# ここの値はすべて default.nix が葉単位で mkDefault にしているので、
-# プロファイル側は lib.mkForce なしで上書きできる。
-# 例: programs.starship.settings.directory.style = "bold green";
+# ここの値は default.nix が既定値として渡すので、使う側は lib.mkForce なしで上書きできる。
 
 # 16 色の実体は端末（wezterm の color_scheme）が持つ。ここでは色名だけを使い、hex は
 # 書かない。starship の palette は使わない（端末と二重に色を持つことになるため）。
 
 # どのプロファイルで switch した環境かをプロンプト先頭に出す。
-# DOTFILES_PROFILE は homelab の dotfiles/base.nix が home.sessionVariables で入れる。
-# 未設定の環境（dotfiles-core を単体で使う場合など）ではモジュールごと非表示になる。
-# style は各プロファイルが上書きする（standard=purple / devcontainer=blue）。
+# DOTFILES_PROFILE と style は使う側がプロファイルごとに入れる。未設定ならモジュールごと非表示になる。
 [env_var.DOTFILES_PROFILE]
 format = " [@$env_value]($style)"
 style = "bold purple"

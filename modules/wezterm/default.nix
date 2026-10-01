@@ -38,7 +38,7 @@
 
     # wezterm.lua が設定ファイルと同じディレクトリから dofile する生成物。
     xdg.configFile."wezterm/ssh-hosts.lua".text = ''
-      -- このファイルは dotfiles/modules/wezterm/default.nix が
+      -- このファイルは wezterm モジュールの default.nix が
       -- programs.wezterm.sshHosts から生成する。直接編集しない。
       return {
       ${lib.concatMapStrings (host: "  ${builtins.toJSON host},\n") config.programs.wezterm.sshHosts}}

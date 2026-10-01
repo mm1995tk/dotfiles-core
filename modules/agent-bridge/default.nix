@@ -19,7 +19,7 @@
   };
 
   # 保存してから送るのは、エージェントがディスクを読むから。未保存だと送った行と
-  # 実際に読まれる内容がずれる（VS Code の連携はエディタ上のバッファを渡すのでずれない）。
+  # 実際に読まれる内容がずれる。
   sendKey = [
     ":write"
     '':sh agent-send "%{buffer_name}" %{selection_line_start} %{selection_line_end}''
@@ -27,8 +27,8 @@
 in {
   home.packages = [agentSend];
 
-  # 選択範囲があれば `path:12-30`、無ければ `path:34` になる。select モードにも同じキーを
-  # 置くのは、helix では選択が normal / select どちらのモードでも成立するため。
+  # select モードにも同じキーを置くのは、helix では選択が normal / select どちらのモードでも
+  # 成立するため。
   programs.helix.settings.keys.normal."C-n" = sendKey;
   programs.helix.settings.keys.select."C-n" = sendKey;
 }

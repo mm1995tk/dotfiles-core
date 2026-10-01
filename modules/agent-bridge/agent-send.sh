@@ -1,11 +1,8 @@
 # helix で見ている位置を、走っているエージェント（Claude Code など）の入力欄へ置く。
-# 呼び出し元は dotfiles/modules/agent-bridge/default.nix が定義する helix のキー。
 #
 # 送るのは選択したテキストそのものではなく「リポジトリ相対のパス:行」。エージェントは
 # 自分でファイルを読めるので、プロンプトが短く済むうえ、別ホストの herdr に送っても
 # 意味が通る（絶対パスだと送り先のコンテナには存在しないパスになる）。
-#
-# 使い方: agent-send <file> <start-line> [end-line]
 
 if [ $# -lt 2 ]; then
   echo "usage: agent-send <file> <start-line> [end-line]"
