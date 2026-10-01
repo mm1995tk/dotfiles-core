@@ -4,6 +4,7 @@
 
   outputs = _: {
     agent-bridge = ./modules/agent-bridge;
+    coder = ./modules/coder.nix;
     helix = ./modules/helix.nix;
     hunk = ./modules/hunk.nix;
     nixvim = ./modules/nixvim.nix;
