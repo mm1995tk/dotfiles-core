@@ -20,7 +20,8 @@
     (lib.mkIf config.programs.ssh.enable {
       # `coder config-ssh` の書き込み先は生成物の ~/.ssh/config でなく別のファイルにして、
       # 取り込むだけにする。ファイルが無くても ssh はエラーにしない。
-      programs.ssh.includes = ["coder-config"];
+      # config-ssh は同じファイルの管理部分を置き換えるため、別の Coder サーバーはファイルを分ける。
+      programs.ssh.includes = ["coder-config" "coder-config.d/*.conf"];
       home.sessionVariables.CODER_SSH_CONFIG_FILE = "$HOME/.ssh/coder-config";
 
       # VS Code の Coder 拡張が接続のたびに ~/.ssh/config へ自分の Include 行を書き戻し、
