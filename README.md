@@ -10,7 +10,7 @@
 ## 使い方
 
 flake のトップレベル output に機能単位の Home Manager モジュールがある
-（現在: `agent-bridge` / `helix` / `hunk` / `nixvim` / `starship` / `wezterm` / `yazi` / `zsh`）。
+（現在: `agent-bridge` / `helix` / `hunk` / `starship` / `wezterm` / `yazi` / `zsh`）。
 
 ```nix
 # flake.nix
@@ -24,18 +24,6 @@ inputs.dotfiles-core.url = "github:mm1995tk/dotfiles-core";
   imports = [
     dotfiles-core.zsh
     dotfiles-core.starship
-  ];
-}
-```
-
-`nixvim` だけは `programs.nixvim` のオプションを宣言しないので、消費側で
-[nixvim](https://github.com/nix-community/nixvim) 本体のモジュールと重ねて import する:
-
-```nix
-{
-  imports = [
-    nixvim.homeModules.nixvim
-    dotfiles-core.nixvim
   ];
 }
 ```
