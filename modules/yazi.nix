@@ -11,14 +11,53 @@ in {
     enable = true;
     enableZshIntegration = true;
 
-    # 任意のコマンドの出力をプレビューにする公式プラグイン。markdown を glow に通すのに使う。
+    # piper は任意のコマンドの出力をプレビューにする公式プラグイン。markdown を glow に通すのに使う。
     # 専用の glow.yazi ではなくこちらなのは、前者が piper の登場で deprecated になっており、
     # プレビュー幅も 55 桁固定でペイン幅に追従しないため。
-    plugins.piper = pkgs.yaziPlugins.piper;
+    plugins = {
+      inherit (pkgs.yaziPlugins) piper zoom git vcs-files smart-enter toggle-pane;
+    };
 
-    # glow は piper が PATH から探す。home.packages ではなく yazi のラッパーに同梱するのは、
-    # プレビューでしか使わないコマンドをシェルの PATH に出さないため。
-    extraPackages = [pkgs.glow];
+    # glow は piper が、magick は zoom が PATH から探す。home.packages ではなく yazi のラッパーに
+    # 同梱するのは、プレビューでしか使わないコマンドをシェルの PATH に出さないため。
+    extraPackages = [pkgs.glow pkgs.imagemagick];
+
+    # git はファイル一覧の各行に変更の状態を出す。この setup と下の fetchers の登録が揃って初めて動く。
+    initLua = ''
+      require("git"):setup()
+    '';
+
+    # キーは yazi の既定と衝突しないものを選ぶ。例外は意図して上書きする 2 つ:
+    #   - l: smart-enter で、ファイルの上でも開けるようにする（ディレクトリでは既定の enter と同じ）
+    #   - -: 既定は絶対パスのシンボリックリンク。zoom の + と対にするため譲る（相対パスの _ は残る）
+    # vcs-files の README の例 g c は、既定の「~/.config へ移動」と衝突するので g v にしている。
+    keymap.mgr.prepend_keymap = [
+      {
+        on = "l";
+        run = "plugin smart-enter";
+        desc = "Enter the child directory, or open the file";
+      }
+      {
+        on = "+";
+        run = "plugin zoom 1";
+        desc = "Zoom in hovered file";
+      }
+      {
+        on = "-";
+        run = "plugin zoom -1";
+        desc = "Zoom out hovered file";
+      }
+      {
+        on = ["g" "v"];
+        run = "plugin vcs-files";
+        desc = "Show Git file changes";
+      }
+      {
+        on = "T";
+        run = "plugin toggle-pane max-preview";
+        desc = "Maximize or restore the preview pane";
+      }
+    ];
 
     settings = {
       # opener は既定のまま $EDITOR（modules/helix.nix）に任せ、ここには hx と書かない。
@@ -30,6 +69,19 @@ in {
         {
           url = "*.md";
           run = ''piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"'';
+        }
+      ];
+
+      plugin.prepend_fetchers = [
+        {
+          url = "*";
+          run = "git";
+          group = "git";
+        }
+        {
+          url = "*/";
+          run = "git";
+          group = "git";
         }
       ];
     };
