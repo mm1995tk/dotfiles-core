@@ -18,6 +18,7 @@
       remember_window_size = false;
       initial_window_width = "120c";
       initial_window_height = "30c";
+      window_padding_width = 8;
       enabled_layouts = "splits,stack";
       macos_option_as_alt = "yes";
       tab_title_template = "{session_name} {title} {keyboard_mode}";
