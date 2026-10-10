@@ -1,5 +1,5 @@
-# Kitty の窓と文字の設定。作業の永続化と workspace の管理は herdr が担当するので、
-# Kitty 自身は通常のローカル端末として起動する。
+# Kitty の窓と文字の設定。分割・タブ・作業の永続化は多重化ツール（standard では herdr。
+# 起動のしかたは features/herdr-desktop.nix）が担当するので、Kitty 自身は 1 枚の窓だけを持つ。
 {pkgs, ...}: {
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -19,25 +19,16 @@
       initial_window_width = "120c";
       initial_window_height = "30c";
       window_padding_width = 8;
-      enabled_layouts = "splits,stack";
       macos_option_as_alt = "yes";
-      tab_title_template = "{session_name} {title} {keyboard_mode}";
     };
 
-    # キーは WezTerm と揃える。Kitty 内の分割を操作するためのもので、
-    # herdr 内のペインには herdr のキーを使う。
+    # Kitty の中に窓やタブを作ると多重化ツールのものと二重になり、どちらのキーで動かすかを
+    # 取り違えるので、既定のキーを潰しておく。
     keybindings = {
-      "cmd+backslash" = "launch --location=vsplit --cwd=current";
-      "ctrl+backslash" = "launch --location=hsplit --cwd=current";
-      "alt+cmd+right" = "neighboring_window right";
-      "alt+cmd+left" = "neighboring_window left";
-      "alt+cmd+h" = "neighboring_window left";
-      "alt+cmd+j" = "neighboring_window down";
-      "alt+cmd+k" = "neighboring_window up";
-      "alt+cmd+l" = "neighboring_window right";
-      "alt+cmd+z" = "toggle_layout stack";
-      "alt+cmd+p" = "focus_visible_window";
-      "alt+cmd+s" = "swap_with_window";
+      "cmd+enter" = "no_op";
+      "kitty_mod+enter" = "no_op";
+      "cmd+t" = "no_op";
+      "kitty_mod+t" = "no_op";
       "alt+cmd+space" = "kitten hints";
       "shift+enter" = "send_text all \\n";
     };
@@ -51,18 +42,6 @@
     # 順序リストではなく、文字範囲ごとにフォントを指定する。
     extraConfig = ''
       symbol_map U+3000-U+30FF,U+31F0-U+31FF,U+3400-U+4DBF,U+4E00-U+9FFF,U+F900-U+FAFF,U+FF00-U+FFEF,U+20000-U+2FA1F,U+30000-U+323AF Noto Sans Mono CJK JP
-
-      map --new-mode resize_pane alt+cmd+r
-      map --mode resize_pane h resize_window narrower 3
-      map --mode resize_pane l resize_window wider 3
-      map --mode resize_pane j resize_window taller 3
-      map --mode resize_pane k resize_window shorter 3
-      map --mode resize_pane left resize_window narrower 3
-      map --mode resize_pane right resize_window wider 3
-      map --mode resize_pane down resize_window taller 3
-      map --mode resize_pane up resize_window shorter 3
-      map --mode resize_pane esc pop_keyboard_mode
-      map --mode resize_pane enter pop_keyboard_mode
     '';
   };
 }
