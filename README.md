@@ -3,9 +3,9 @@
 プライベート/仕事で共通する dotfiles の設定。
 
 > [!IMPORTANT]
-> このリポジトリは private リポジトリ `mm1995tk/homelab` から CI で自動配信される
+> このリポジトリは private リポジトリ `mm1995tk/platform` から CI で自動配信される
 > **読み取り専用ミラー**です。ここへ直接コミットしても次回の同期で上書きされます。
-> 編集は homelab 側（`dotfiles/modules/`）で行うこと。
+> 編集は platform 側（`dotfiles/modules/`）で行うこと。
 
 ## 使い方
 
