@@ -4,9 +4,9 @@
 
   outputs = _: {
     agent-bridge = ./modules/agent-bridge;
+    alacritty = ./modules/alacritty.nix;
     helix = ./modules/helix.nix;
     hunk = ./modules/hunk.nix;
-    kitty = ./modules/kitty.nix;
     starship = ./modules/starship;
     wezterm = ./modules/wezterm;
     yazi = ./modules/yazi.nix;
