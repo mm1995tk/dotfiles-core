@@ -11,10 +11,28 @@
 
   programs.alacritty = {
     enable = true;
-    theme = "github_dark";
+    # github_dark は GitHub の古い配色（背景が灰色がかった #24292e）なので、今の配色の方を使う。
+    theme = "github_dark_default";
 
     settings = {
-      font.normal.family = "JetBrainsMono Nerd Font Mono";
+      # テーマが GitHub 本家の配色から外している色（文字が黄みがかる）と、持っていない色を足す。
+      colors = {
+        primary.foreground = "#c9d1d9";
+        bright.white = "#ffffff";
+        cursor = {
+          cursor = "#58a6ff";
+          text = "CellBackground";
+        };
+        selection = {
+          background = "#58a6ff";
+          text = "#0d1117";
+        };
+      };
+
+      font = {
+        normal.family = "JetBrainsMono Nerd Font Mono";
+        size = 11;
+      };
 
       window = {
         dimensions = {
