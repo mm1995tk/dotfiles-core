@@ -96,7 +96,7 @@ $character\
 
 # ここの値は default.nix が既定値として渡すので、使う側は lib.mkForce なしで上書きできる。
 
-# 16 色の実体は端末（wezterm の color_scheme）が持つ。ここでは色名だけを使い、hex は
+# 16 色の実体は端末（ghostty / kitty のテーマ）が持つ。ここでは色名だけを使い、hex は
 # 書かない。starship の palette は使わない（端末と二重に色を持つことになるため）。
 
 # どのプロファイルで switch した環境かをプロンプト先頭に出す。

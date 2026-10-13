@@ -1,7 +1,7 @@
 # hunk (差分ビューア)。差分を読む場所を1つに寄せるモジュールで、git のページャと
 # helix / yazi からの入口をまとめて持つ。
 {pkgs, ...}: let
-  # 端末 (wezterm の "GitHub Dark") と helix の github_dark に色を揃える。
+  # 端末 (ghostty / kitty の GitHub Dark) と helix の github_dark に色を揃える。
   theme = "github-dark";
 in {
   home.packages = [pkgs.hunk];
@@ -30,8 +30,8 @@ in {
   ];
 
   # helix: ワーキングツリー全体を見る。helix の :sh には端末が付かないので TUI をその場に
-  # 出せず、wezterm に隣のペインを開いてもらう ── ここだけ wezterm 依存で、ssh 先の helix
-  # では wezterm が無く素直に失敗する（yazi の C-y は端末を借りるので ssh 先でも動く）。
-  # ログインシェル越しに起動する理由は modules/wezterm/wezterm.lua の同種のコメント参照。
-  programs.helix.settings.keys.normal."C-g" = ":sh wezterm cli split-pane --right --percent 45 -- $SHELL -lc 'hunk diff --theme ${theme}' > /dev/null";
+  # 出せず、herdr に隣のペインを開いてもらう。端末の分割ではなく herdr なのは、herdr の入った
+  # ssh 先の helix でも同じキーで動くため（yazi の C-y は端末を借りるので herdr も要らない）。
+  # 新しいペインのシェルに hunk を流し、終えたら exit でペインごと閉じる。
+  programs.helix.settings.keys.normal."C-g" = '':sh pane=$(herdr pane split --current --direction right --ratio 0.45 --cwd "$PWD" --focus | sed -n 's/.*"pane_id":"\([^"]*\)".*/\1/p') && herdr pane run "$pane" 'hunk diff --theme ${theme}; exit' > /dev/null'';
 }

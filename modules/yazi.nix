@@ -90,7 +90,7 @@ in {
   # helix からの入口。yazi 公式の Helix 連携レシピ
   # (https://yazi-rs.github.io/docs/tips) をなぞっている。
   #
-  # 肝は :insert-output が helix の端末をそのまま子プロセスへ貸すこと。wezterm のペイン
+  # 肝は :insert-output が helix の端末をそのまま子プロセスへ貸すこと。端末や herdr のペイン
   # 分割に頼らないので、ssh 先の helix でも同じキーで動く。
   #
   # 前後の :sh は後始末:
