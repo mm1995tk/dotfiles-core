@@ -2,9 +2,6 @@
 # 起動のしかたは features/herdr-desktop.nix）が担当するので、Ghostty 自身は 1 枚の窓だけを持つ。
 #
 # リンクは既定のまま: macOS では cmd を押しながら URL に乗せると下線が出て、cmd+クリックで開く。
-#
-# Enter は改行、cmd+Enter が実行・送信。端末が持つのは cmd+Enter に Ctrl-J と同じ文字を送らせる所まで
-# で、Enter を改行にするのは受け側（zsh は modules/zsh、Claude Code は features/coding-agents.nix）。
 {
   config,
   lib,
@@ -56,8 +53,6 @@
         "super+d=unbind"
         "super+shift+d=unbind"
         "shift+enter=text:\\n"
-        # 既定は全画面の切り替え。
-        "super+enter=text:\\n"
       ];
     };
   };

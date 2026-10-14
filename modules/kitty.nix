@@ -25,9 +25,7 @@
     # Kitty の中に窓やタブを作ると多重化ツールのものと二重になり、どちらのキーで動かすかを
     # 取り違えるので、既定のキーを潰しておく。
     keybindings = {
-      # cmd+Enter は Ctrl-J と同じ文字を送って実行・送信にする（Enter を改行にする側の説明は
-      # modules/ghostty.nix）。既定は新しい窓。
-      "cmd+enter" = "send_text all \\n";
+      "cmd+enter" = "no_op";
       "kitty_mod+enter" = "no_op";
       "cmd+t" = "no_op";
       "kitty_mod+t" = "no_op";

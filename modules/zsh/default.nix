@@ -29,12 +29,6 @@
     };
     initContent = lib.mkAfter ''
       zstyle ':completion:*:default' menu select=1
-      # Enter は改行を入れるだけにし、実行は Ctrl-J（端末が cmd+Enter に送らせる文字。modules/ghostty.nix）。
-      # 複数行のコマンドを Enter で書き足せるようにするため。この割り当てを知らない端末でも Ctrl-J で実行できる。
-      # 補完のメニューの中では Enter で候補を確定する（未割り当てだと確定したあと改行まで入る）。
-      bindkey '^M' self-insert-unmeta
-      zmodload zsh/complist
-      bindkey -M menuselect '^M' accept-line
       . ${./index.zsh}
     '';
   };
