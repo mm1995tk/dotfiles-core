@@ -4,6 +4,7 @@
 
   outputs = _: {
     agent-bridge = ./modules/agent-bridge;
+    gh-editor = ./modules/gh-editor;
     ghostty = ./modules/ghostty.nix;
     helix = ./modules/helix.nix;
     hunk = ./modules/hunk.nix;

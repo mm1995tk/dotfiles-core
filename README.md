@@ -10,7 +10,7 @@
 ## 使い方
 
 flake のトップレベル output に機能単位の Home Manager モジュールがある
-（現在: `agent-bridge` / `ghostty` / `helix` / `hunk` / `kitty` / `starship` / `yazi` / `zsh`）。
+（現在: `agent-bridge` / `gh-editor` / `ghostty` / `helix` / `hunk` / `kitty` / `starship` / `yazi` / `zsh`）。
 
 ```nix
 # flake.nix
