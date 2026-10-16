@@ -7,5 +7,8 @@
 }: let
   gh-editor = import ./package.nix {inherit pkgs;};
 in {
+  # gh の拡張として `gh editor` でも呼べるようにする（gh は PATH ではなく自分の拡張のディレクトリしか探さない）。
+  # PATH にも置くのは、gh-editor の skill が `gh-editor` で呼ぶため。
   home.packages = lib.optional (gh-editor != null) gh-editor;
+  programs.gh.extensions = lib.optional (gh-editor != null) gh-editor;
 }
