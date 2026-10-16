@@ -57,6 +57,6 @@
     };
   };
 
-  # Finder から起動すると作業ディレクトリがホームになる。~/workspace を置く決まりのある macOS だけに絞る。
-  programs.ghostty.settings.working-directory = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "${config.home.homeDirectory}/workspace";
+  # Finder から起動すると作業ディレクトリがホームになる。~/workspaces を置く決まりのある macOS だけに絞る。
+  programs.ghostty.settings.working-directory = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "${config.home.homeDirectory}/workspaces";
 }

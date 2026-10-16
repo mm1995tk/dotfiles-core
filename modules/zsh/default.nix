@@ -17,7 +17,7 @@
       }
     ];
     loginExtra = ''
-      mkdir -p $HOME/workspace
+      mkdir -p $HOME/workspaces
     '';
     shellAliases = {
       grep = "grep --colour=auto";

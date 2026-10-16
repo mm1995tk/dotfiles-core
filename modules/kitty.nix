@@ -11,7 +11,7 @@
     themeFile = "GitHub_Dark";
     font.name = "JetBrainsMono Nerd Font Mono";
     shellIntegration.enableZshIntegration = true;
-    darwinLaunchOptions = ["--directory=~/workspace"];
+    darwinLaunchOptions = ["--directory=~/workspaces"];
 
     settings = {
       disable_ligatures = "always";
