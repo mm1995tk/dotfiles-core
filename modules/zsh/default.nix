@@ -16,9 +16,6 @@
         src = pkgs.nix-zsh-completions.src;
       }
     ];
-    loginExtra = ''
-      mkdir -p $HOME/workspaces
-    '';
     shellAliases = {
       grep = "grep --colour=auto";
       la = "ls -A";

@@ -2,12 +2,7 @@
 # 起動のしかたは features/herdr-desktop.nix）が担当するので、Ghostty 自身は 1 枚の窓だけを持つ。
 #
 # リンクは既定のまま: macOS では cmd を押しながら URL に乗せると下線が出て、cmd+クリックで開く。
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # font-family が名前で参照するフォント。どちらも入れないとフォールバック先が OS 任せになり、
   # マシンごとに字形が変わる。
   home.packages = with pkgs; [
@@ -56,7 +51,4 @@
       ];
     };
   };
-
-  # Finder から起動すると作業ディレクトリがホームになる。~/workspaces を置く決まりのある macOS だけに絞る。
-  programs.ghostty.settings.working-directory = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "${config.home.homeDirectory}/workspaces";
 }
