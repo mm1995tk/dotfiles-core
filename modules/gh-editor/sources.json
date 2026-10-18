@@ -1,22 +1,22 @@
 {
-  "rev": "0b90da12f1984ba4825194008d64e3e6e6a7da05",
-  "version": "0b90da12f198",
+  "rev": "b7f2392e085f07fcd0067ff7109091162c94f150",
+  "version": "b7f2392e085f",
   "systems": {
     "x86_64-linux": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/gh-editor-0b90da12f198/gh-editor-linux-amd64",
-      "hash": "sha256-DpExc9NCDXOxGjLrRIfSPnzU8jRaadRGVgcZVzNFiTU="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/gh-editor-b7f2392e085f/gh-editor-linux-amd64",
+      "hash": "sha256-GdgeoBXmp5bk5Ef/sjDsLUg2PTUs8rzITMwtwMLCFdo="
     },
     "aarch64-linux": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/gh-editor-0b90da12f198/gh-editor-linux-arm64",
-      "hash": "sha256-YzCSfeZfU2UZ9qjtkp1Caqq78x84dEjRQUz/7AjS1Ts="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/gh-editor-b7f2392e085f/gh-editor-linux-arm64",
+      "hash": "sha256-ZpwY6Hxm+1gmy79QCeBfXfw4zsdQLAAlzT5rg2mBVJg="
     },
     "x86_64-darwin": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/gh-editor-0b90da12f198/gh-editor-darwin-amd64",
-      "hash": "sha256-PKAFkMKP438kJrWkO2uQw/gnvUfYZZ5q80Q6XmDwkiU="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/gh-editor-b7f2392e085f/gh-editor-darwin-amd64",
+      "hash": "sha256-3pfarBgCegerp/atZeuEnC/WgdNwDYw77hYefuLzVoE="
     },
     "aarch64-darwin": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/gh-editor-0b90da12f198/gh-editor-darwin-arm64",
-      "hash": "sha256-rWyOh/QrE0ePATu39Ao5wpsSdQwZVMhEX8BWtuFBhuo="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/gh-editor-b7f2392e085f/gh-editor-darwin-arm64",
+      "hash": "sha256-WLo6pt176qnQ6cFiz9GlbfKzIIkG41+6GFQ+q17jCpE="
     }
   }
 }
