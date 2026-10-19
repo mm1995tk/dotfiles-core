@@ -1,22 +1,22 @@
 {
-  "rev": "e91fa22ef678ee1f8cd3d742f2e8c4ca39a5e756",
-  "version": "e91fa22ef678",
+  "rev": "62b229d80be8becb18dc415a7506bbef84c09b7c",
+  "version": "62b229d80be8",
   "systems": {
     "x86_64-linux": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-e91fa22ef678/dgk-linux-amd64",
-      "hash": "sha256-PBZVhZ6KhBKZg6qn5oKgZiMaUSyHBLnuuC6/ovqFRSo="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-62b229d80be8/dgk-linux-amd64",
+      "hash": "sha256-xWFJGE18OWRj4E/QWtvq6k985HBbGxtVA+cC0uJpC0M="
     },
     "aarch64-linux": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-e91fa22ef678/dgk-linux-arm64",
-      "hash": "sha256-IR0pz3iKYjkjyPT3eCpcvnKBHCGtYt21vg84fSYPj3E="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-62b229d80be8/dgk-linux-arm64",
+      "hash": "sha256-ZVLFxYoSN/nqlX734GjTlA9OtqwKA/0vbT7J6KYY3RQ="
     },
     "x86_64-darwin": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-e91fa22ef678/dgk-darwin-amd64",
-      "hash": "sha256-qUfqdU62q0JX2Ya4W3ABbFDMEfWC5FXHzZJ2PI6+dXU="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-62b229d80be8/dgk-darwin-amd64",
+      "hash": "sha256-wgGzXkMN6sFgVKv36gZfA2gI7Jz1EXFnAbv0JF5X6UU="
     },
     "aarch64-darwin": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-e91fa22ef678/dgk-darwin-arm64",
-      "hash": "sha256-RgbIK565wN1ClRndwsbNKXplqjiRZnFFoBduBn7qvMk="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-62b229d80be8/dgk-darwin-arm64",
+      "hash": "sha256-lDi1OINl8PniYWZ2Kclp0yocW1tFMEguaxy2SVVveYQ="
     }
   }
 }
