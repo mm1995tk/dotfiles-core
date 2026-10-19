@@ -1,1 +1,22 @@
-{}
+{
+  "rev": "dac4ff5f1277a4f5b6654d4de86555eedbc302d9",
+  "version": "dac4ff5f1277",
+  "systems": {
+    "x86_64-linux": {
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-dac4ff5f1277/dgk-linux-amd64",
+      "hash": "sha256-YyKgEqE4WdUGKrjVX2e6Zg1GAEs/QCbddnr2/sebo8w="
+    },
+    "aarch64-linux": {
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-dac4ff5f1277/dgk-linux-arm64",
+      "hash": "sha256-oQfb7M5jg3n58jklvyBC1yt4nKqxSEFcnPl3aE8XFcc="
+    },
+    "x86_64-darwin": {
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-dac4ff5f1277/dgk-darwin-amd64",
+      "hash": "sha256-IxoChyLDGQqqRH7bv+jvhL/BOh+lefgf97XFTwURxEE="
+    },
+    "aarch64-darwin": {
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/dageki-dac4ff5f1277/dgk-darwin-arm64",
+      "hash": "sha256-lnuayFwyWj2DHVSPoZfC3na/Le31rG8wwS+0qntvlwE="
+    }
+  }
+}
