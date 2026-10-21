@@ -2,7 +2,7 @@
 # 起動のしかたは features/herdr-desktop.nix）が担当するので、Ghostty 自身は 1 枚の窓だけを持つ。
 #
 # リンクは既定のまま: macOS では cmd を押しながら URL に乗せると下線が出て、cmd+クリックで開く。
-{pkgs, ...}: {
+{ pkgs, ... }: {
   # font-family が名前で参照するフォント。どちらも入れないとフォールバック先が OS 任せになり、
   # マシンごとに字形が変わる。
   home.packages = with pkgs; [
@@ -13,10 +13,7 @@
   programs.ghostty = {
     enable = true;
     # nixpkgs の ghostty は Linux 向けのソースビルドで、macOS は公式のバイナリを包んだ ghostty-bin が別にある。
-    package =
-      if pkgs.stdenv.hostPlatform.isDarwin
-      then pkgs.ghostty-bin
-      else pkgs.ghostty;
+    package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
 
     settings = {
       # 16 色パレットと背景・前景の実体はここで決める。starship 側は "blue" のような色名で

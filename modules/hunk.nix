@@ -1,10 +1,12 @@
 # hunk (差分ビューア)。差分を読む場所を1つに寄せるモジュールで、git のページャと
 # helix / yazi からの入口をまとめて持つ。
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   # 端末 (ghostty / kitty の GitHub Dark) と helix の github_dark に色を揃える。
   theme = "github-dark";
-in {
-  home.packages = [pkgs.hunk];
+in
+{
+  home.packages = [ pkgs.hunk ];
 
   programs.git.settings = {
     # ページャは stdout が端末のときしか起動しないので、パイプ越しや非対話の実行
@@ -33,5 +35,6 @@ in {
   # 出せず、herdr に隣のペインを開いてもらう。端末の分割ではなく herdr なのは、herdr の入った
   # ssh 先の helix でも同じキーで動くため（yazi の C-y は端末を借りるので herdr も要らない）。
   # 新しいペインのシェルに hunk を流し、終えたら exit でペインごと閉じる。
-  programs.helix.settings.keys.normal."C-g" = '':sh pane=$(herdr pane split --current --direction right --ratio 0.45 --cwd "$PWD" --focus | sed -n 's/.*"pane_id":"\([^"]*\)".*/\1/p') && herdr pane run "$pane" 'hunk diff --theme ${theme}; exit' > /dev/null'';
+  programs.helix.settings.keys.normal."C-g" =
+    '':sh pane=$(herdr pane split --current --direction right --ratio 0.45 --cwd "$PWD" --focus | sed -n 's/.*"pane_id":"\([^"]*\)".*/\1/p') && herdr pane run "$pane" 'hunk diff --theme ${theme}; exit' > /dev/null'';
 }

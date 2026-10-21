@@ -1,6 +1,6 @@
 # Kitty の窓と文字の設定。分割・タブ・作業の永続化は多重化ツール（standard では herdr。
 # 起動のしかたは features/herdr-desktop.nix）が担当するので、Kitty 自身は 1 枚の窓だけを持つ。
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     noto-fonts-cjk-sans

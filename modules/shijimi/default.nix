@@ -4,10 +4,12 @@
   lib,
   pkgs,
   ...
-}: let
-  shijimi = import ./package.nix {inherit pkgs;};
-  toml = pkgs.formats.toml {};
-in {
+}:
+let
+  shijimi = import ./package.nix { inherit pkgs; };
+  toml = pkgs.formats.toml { };
+in
+{
   home.packages = lib.optional (shijimi != null) shijimi;
 
   # 形式は Helix の languages.toml と同じで、組み込みの既定値に name ごとに重ねる（既定の nix は nil）。
@@ -17,7 +19,7 @@ in {
       language = [
         {
           name = "nix";
-          language-servers = ["nixd"];
+          language-servers = [ "nixd" ];
         }
       ];
     };

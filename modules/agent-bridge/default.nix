@@ -8,13 +8,17 @@
 # ペイン操作でも同じことはできるが、それだと端末の CLI の無い ssh 先で使えないうえ、
 # 「どのペインで claude が動いているか」を推測する必要がある。herdr は
 # エージェントを一級の概念として持っているので、宛先を推測せずに引ける。
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   agentSend = pkgs.writeShellApplication {
     name = "agent-send";
     # herdr は runtimeInputs に入れない。環境によっては herdr が nixpkgs 以外（/usr/local/bin
     # 等）から入っており、ここで nixpkgs 版を PATH の先頭に差し込むと、クライアントとサーバの
     # バージョンがずれる。
-    runtimeInputs = [pkgs.git pkgs.jq];
+    runtimeInputs = [
+      pkgs.git
+      pkgs.jq
+    ];
     text = builtins.readFile ./agent-send.sh;
   };
 
@@ -24,8 +28,9 @@
     ":write"
     '':sh agent-send "%{buffer_name}" %{selection_line_start} %{selection_line_end}''
   ];
-in {
-  home.packages = [agentSend];
+in
+{
+  home.packages = [ agentSend ];
 
   # select モードにも同じキーを置くのは、helix では選択が normal / select どちらのモードでも
   # 成立するため。

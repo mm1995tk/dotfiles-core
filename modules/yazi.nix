@@ -1,12 +1,14 @@
 # yazi (TUI ファイルマネージャ)。helix と組ませる前提で置いている ── helix には
 # ファイルツリーが無く、開いていないファイルを「眺めながら選ぶ」手段が弱いので、
 # その穴を埋める役。単体で使うときは zsh 関数 `y` で開き、抜けた先へシェルごと cd する。
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   # yazi が選択結果を書き出す先。helix 側は同じファイルを読んで :open する。
   # 公式レシピは /tmp の固定パスだが、他人と共用のマシンで衝突しない位置へ移してある。
   chooserDir = "$HOME/.cache/helix";
   chooserFile = "${chooserDir}/yazi-chooser";
-in {
+in
+{
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
@@ -15,12 +17,22 @@ in {
     # 専用の glow.yazi ではなくこちらなのは、前者が piper の登場で deprecated になっており、
     # プレビュー幅も 55 桁固定でペイン幅に追従しないため。
     plugins = {
-      inherit (pkgs.yaziPlugins) piper zoom git vcs-files smart-enter toggle-pane;
+      inherit (pkgs.yaziPlugins)
+        piper
+        zoom
+        git
+        vcs-files
+        smart-enter
+        toggle-pane
+        ;
     };
 
     # glow は piper が、magick は zoom が PATH から探す。home.packages ではなく yazi のラッパーに
     # 同梱するのは、プレビューでしか使わないコマンドをシェルの PATH に出さないため。
-    extraPackages = [pkgs.glow pkgs.imagemagick];
+    extraPackages = [
+      pkgs.glow
+      pkgs.imagemagick
+    ];
 
     # git はファイル一覧の各行に変更の状態を出す。この setup と下の fetchers の登録が揃って初めて動く。
     initLua = ''
@@ -48,7 +60,10 @@ in {
         desc = "Zoom out hovered file";
       }
       {
-        on = ["g" "v"];
+        on = [
+          "g"
+          "v"
+        ];
         run = "plugin vcs-files";
         desc = "Show Git file changes";
       }
