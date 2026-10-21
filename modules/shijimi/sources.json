@@ -1,22 +1,22 @@
 {
-  "rev": "0370be7333a77fb6dfa1ecd1b64bd130ca11d7ae",
-  "version": "0370be7333a7",
+  "rev": "982f344b8b1d6b53799a2d7307f6d40fb40cd890",
+  "version": "982f344b8b1d",
   "systems": {
     "x86_64-linux": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/shijimi-0370be7333a7/shj-linux-amd64",
-      "hash": "sha256-uOfQZ/jxRwIZYC+gTnfkE/kWteY04u34n4veYvWrqwk="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/shijimi-982f344b8b1d/shj-linux-amd64",
+      "hash": "sha256-74ESgwDGavDpb6JOyiV+O4AOV4UBn3xGY96UllnW7p4="
     },
     "aarch64-linux": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/shijimi-0370be7333a7/shj-linux-arm64",
-      "hash": "sha256-8N6BPcDcTv8lfoGF2eUubKYemF6NXxnqeWT8gKUrxOs="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/shijimi-982f344b8b1d/shj-linux-arm64",
+      "hash": "sha256-jffpSn8/yhf1q9e7MpR4jmDqZPFvSrAI92dTNd+pZGM="
     },
     "x86_64-darwin": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/shijimi-0370be7333a7/shj-darwin-amd64",
-      "hash": "sha256-lylpo2HZAB2tuLNKPEY1/1R0zVyGRZSmKitLb6qIjYQ="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/shijimi-982f344b8b1d/shj-darwin-amd64",
+      "hash": "sha256-GOHvjM8M4A3Khmoqt+hw3Taq55pNnSwacNVsH5d8LTM="
     },
     "aarch64-darwin": {
-      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/shijimi-0370be7333a7/shj-darwin-arm64",
-      "hash": "sha256-kM/YpG/cZqF0oNUlWgNwFaszFyPhkyjRdfMGYnmhBrQ="
+      "url": "https://github.com/mm1995tk/dotfiles-core/releases/download/shijimi-982f344b8b1d/shj-darwin-arm64",
+      "hash": "sha256-xCOWDGK0XIlZJRbljEHiOMpL2JtYzpGlygPBmIJ+EBY="
     }
   }
 }
