@@ -38,7 +38,7 @@ git の user.name / user.email などの個人情報はこのリポジトリに�
 ```nix
 {
   imports = [
-    inputs.shijimi.homeManagerModules.default # inputs.shijimi.url = "github:mm1995tk/shijimi-editor";
+    inputs.shijimi.homeManagerModules.default # inputs.shijimi.url = "github:mm1995tk/shijimi-editor/release";
     dotfiles-core.shijimi
   ];
 }
