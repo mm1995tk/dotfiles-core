@@ -10,7 +10,7 @@
 ## 使い方
 
 flake のトップレベル output に機能単位の Home Manager モジュールがある
-（現在: `agent-bridge` / `ghostty` / `helix` / `hunk` / `kitty` / `shijimi` / `shijimi-bin` / `starship` / `yazi` / `zsh`）。
+（現在: `agent-bridge` / `ghostty` / `helix` / `hunk` / `kitty` / `shijimi` / `starship` / `yazi` / `zsh`）。
 
 ```nix
 # flake.nix
@@ -43,6 +43,3 @@ git の user.name / user.email などの個人情報はこのリポジトリに�
   ];
 }
 ```
-
-ソースからビルドできない環境（Go のモジュールを取りに行けないプロキシの内側など）では、`dotfiles-core.shijimi-bin` も
-import すると、ビルド済みのバイナリを GitHub Release から取って入れる。

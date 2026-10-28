@@ -9,7 +9,6 @@
     hunk = ./modules/hunk.nix;
     kitty = ./modules/kitty.nix;
     shijimi = ./modules/shijimi;
-    shijimi-bin = ./modules/shijimi-bin;
     starship = ./modules/starship;
     yazi = ./modules/yazi.nix;
     zsh = ./modules/zsh;
