@@ -2,10 +2,9 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """\
-$time\
+$username\
 ${env_var.DOTFILES_PROFILE}\
 $line_break\
-$username\
 $hostname\
 $localip\
 $shlvl\
@@ -82,11 +81,9 @@ $direnv\
 $crystal\
 $custom\
 $sudo\
-$cmd_duration\
 $line_break\
 $jobs\
 $battery\
-$status\
 $os\
 $container\
 $shell\
@@ -105,13 +102,11 @@ $character\
 format = " [@$env_value]($style)"
 style = "bold purple"
 
-[status]
-disabled = false
-
-[time]
-format = "[$time]($style)"
-disabled = false
-time_format = "%FT%T%:z"
+# 時刻・所要時間・終了コードはプロンプトに出さず、コマンドの前後に zsh が出す（modules/zsh/index.zsh）。
+# プロンプトの時刻は前のコマンドが終わった時刻で、次のコマンドを入力した時刻ではないため。
+[username]
+show_always = true
+format = "[$user]($style)"
 
 [directory]
 style = "bold blue"
