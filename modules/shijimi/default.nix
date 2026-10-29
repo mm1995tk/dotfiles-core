@@ -9,6 +9,7 @@
 {
   programs.shijimi-editor = {
     enable = lib.mkDefault true;
+    settings.editor.line-number = lib.mkDefault "relative";
     # 形式は Helix の languages.toml と同じで、組み込みの既定値に name ごとに重ねる（既定の nix は nil）。
     languages = {
       language-server.nixd.command = lib.getExe pkgs.nixd;
