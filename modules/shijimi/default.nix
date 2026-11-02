@@ -20,6 +20,13 @@ in
   config = lib.mkMerge [
     { programs.shijimi-editor.enable = lib.mkDefault true; }
     (lib.mkIf cfg.enable {
+      # git のコミットメッセージなど、他のツールが開くエディタも shijimi にする。ファイルを渡すと単体編集
+      # モード（ツリー・LSP・ターミナルを起動しない）で開く。キー単位で mkDefault にするのは、セット全体に
+      # 掛けると別のモジュールが home.sessionVariables を定義した時点で既定値が丸ごと消えるため。
+      home.sessionVariables = {
+        EDITOR = lib.mkDefault "shj";
+        VISUAL = lib.mkDefault "shj";
+      };
       # 形式は Helix の languages.toml と同じで、組み込みの既定値に name ごとに重ねる（既定の nix は nil）。
       xdg.configFile."${configDir}/languages.toml".source = toml.generate "shijimi-languages.toml" {
         language-server.nixd.command = lib.getExe pkgs.nixd;

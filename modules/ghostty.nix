@@ -25,7 +25,7 @@
       # 日本語字形が化けるため、次点を明示して固定する。
       #
       # Nerd Font には Mono / Propo / 無印の 3 系統があり、記号を 1 セルに収めるのは Mono だけ。
-      # 無印は記号が 2 セル幅で、yazi のような桁を揃える TUI で列がずれる。
+      # 無印は記号が 2 セル幅で、桁を揃える TUI で列がずれる。
       font-family = [
         "JetBrainsMono Nerd Font Mono"
         "Noto Sans Mono CJK JP"
