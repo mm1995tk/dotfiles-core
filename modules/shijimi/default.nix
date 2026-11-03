@@ -37,11 +37,19 @@ in
           }
         ];
       };
+      home.packages = [
+        # json・toml・yaml・bash の言語サーバー。既定の設定がこの名前で PATH から探すので、入れるだけで足りる。
+        # PATH から探させると、プロジェクトの開発シェルが入れた版があればそちらが先に見つかる。
+        pkgs.vscode-langservers-extracted
+        pkgs.taplo
+        pkgs.yaml-language-server
+        pkgs.bash-language-server
+        # bash-language-server が診断に使う。
+        pkgs.shellcheck
+      ]
       # shj でも nightly 版が起動するようにする。nightly 版が書き出す skill も shj を呼ぶので、エイリアスでは
       # なく PATH のコマンドにして、対話でないシェル（コーディングエージェント）からも届くようにする。
-      home.packages = lib.mkIf nightly [
-        (pkgs.writeShellScriptBin "shj" ''exec ${lib.getExe cfg.package} "$@"'')
-      ];
+      ++ lib.optional nightly (pkgs.writeShellScriptBin "shj" ''exec ${lib.getExe cfg.package} "$@"'');
     })
   ];
 }
