@@ -9,12 +9,7 @@
 }:
 let
   cfg = config.programs.shijimi-editor;
-  # nightly 版は設定を ~/.config/shijimi-editor-nightly/ から読み、安定版と並べて入れられる。
-  # 本体のモジュールの languages は版によらず ~/.config/shijimi-editor/ に書くので、使わずに
-  # 入れた版の置き場へ自分で書く。
   nightly = cfg.package.meta.mainProgram == "shj-nightly";
-  configDir = if nightly then "shijimi-editor-nightly" else "shijimi-editor";
-  toml = pkgs.formats.toml { };
 in
 {
   config = lib.mkMerge [
@@ -28,7 +23,7 @@ in
         VISUAL = lib.mkDefault "shj";
       };
       # 形式は Helix の languages.toml と同じで、組み込みの既定値に name ごとに重ねる（既定の nix は nil）。
-      xdg.configFile."${configDir}/languages.toml".source = toml.generate "shijimi-languages.toml" {
+      programs.shijimi-editor.languages = {
         language-server.nixd.command = lib.getExe pkgs.nixd;
         language = [
           {
