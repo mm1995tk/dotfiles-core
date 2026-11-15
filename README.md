@@ -10,7 +10,7 @@
 ## 使い方
 
 flake のトップレベル output に機能単位の Home Manager モジュールがある
-（現在: `ghostty` / `kitty` / `shijimi` / `starship` / `zsh`）。
+（現在: `ghostty` / `kisui-terminal` / `kitty` / `shijimi` / `starship` / `zsh`）。
 
 ```nix
 # flake.nix

@@ -4,6 +4,7 @@
 
   outputs = _: {
     ghostty = ./modules/ghostty.nix;
+    kisui-terminal = ./modules/kisui-terminal.nix;
     kitty = ./modules/kitty.nix;
     shijimi = ./modules/shijimi;
     starship = ./modules/starship;
