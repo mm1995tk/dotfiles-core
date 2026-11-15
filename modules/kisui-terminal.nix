@@ -15,7 +15,10 @@
       # ログインし、拡張機能が Cookie を内蔵ブラウザに戻す。
       gui.browser = {
         enabled = true;
-        passkey_sites = [ "github.com" ];
+        passkey_sites = [
+          "github.com"
+          "accounts.google.com"
+        ];
       };
     };
   };
