@@ -33,6 +33,8 @@ in
         ];
       };
       home.packages = [
+        # Markdown プレビューの Mermaid 描画は、外部コマンド mmdc を PATH から探す。
+        pkgs.mermaid-cli
         # json・toml・yaml・bash の言語サーバー。既定の設定がこの名前で PATH から探すので、入れるだけで足りる。
         # PATH から探させると、プロジェクトの開発シェルが入れた版があればそちらが先に見つかる。
         pkgs.vscode-langservers-extracted
