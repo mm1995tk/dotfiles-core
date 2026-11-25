@@ -14,6 +14,12 @@ in
 {
   config = lib.mkMerge [
     { programs.shijimi-editor.enable = lib.mkDefault true; }
+    # Mermaid の PNG は shijimi-editor が動くマシンの Chromium が描くため、SSH 元の端末のフォントは使えない。
+    # GUI を入れない Linux の VM にもフォントを配り、Chromium が Fontconfig で見つけられるようにする。
+    (lib.mkIf (cfg.enable && pkgs.stdenv.hostPlatform.isLinux) {
+      home.packages = [ pkgs.noto-fonts-cjk-sans ];
+      fonts.fontconfig.enable = true;
+    })
     (lib.mkIf cfg.enable {
       # git のコミットメッセージなど、他のツールが開くエディタも shijimi にする。ファイルを渡すと単体編集
       # モード（ツリー・LSP・ターミナルを起動しない）で開く。キー単位で mkDefault にするのは、セット全体に
